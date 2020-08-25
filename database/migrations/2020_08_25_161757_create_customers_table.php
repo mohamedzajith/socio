@@ -17,10 +17,11 @@ class CreateCustomersTable extends Migration
             $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('password');
             $table->string('contact_no');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
